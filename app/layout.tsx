@@ -12,7 +12,7 @@ export default function RootLayout({
         <div className="flex min-h-screen bg-slate-50">
           <Sidebar />
 
-          <main className="ml-72 flex-1 p-10">
+          <main className="ml-72 min-h-screen bg-slate-50 px-10 py-8">
             {children}
           </main>
         </div>

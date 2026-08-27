@@ -7,12 +7,6 @@ export type IrisInput = {
   petalWidth: number;
 };
 
-export type IrisPrediction = {
-  classId: number;
-  species: IrisSpecies;
-  input: IrisInput;
-};
-
 export type IrisSample = {
   id: number;
   sepalLength: number;
@@ -20,4 +14,14 @@ export type IrisSample = {
   petalLength: number;
   petalWidth: number;
   species: IrisSpecies;
+};
+
+export type IrisProbabilities = Record<IrisSpecies, number>;
+
+export type IrisPrediction = {
+  classId: number;
+  species: IrisSpecies;
+  confidence: number;
+  probabilities: IrisProbabilities;
+  input: IrisInput;
 };

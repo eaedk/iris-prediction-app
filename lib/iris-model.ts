@@ -8,10 +8,11 @@ import {
 } from "ml-random-forest";
 
 import type {
+  IrisProbabilities,
   IrisSpecies,
 } from "@/types/iris";
 
-const species: IrisSpecies[] = [
+const SPECIES: readonly IrisSpecies[] = [
   "setosa",
   "versicolor",
   "virginica",
@@ -27,26 +28,55 @@ const model = new RandomForestClassifier({
   nEstimators: 100,
 });
 
-model.train(
-  trainingSet,
-  trainingLabels
-);
+model.train(trainingSet, trainingLabels);
 
-export function predictIris(
-  features: number[]
-) {
+export function predictIris(features: number[]) {
   if (features.length !== 4) {
     throw new Error(
-      "Une fleur Iris doit avoir exactement 4 caractéristiques."
+      "La prédiction nécessite exactement 4 caractéristiques."
     );
   }
 
-  const classId = model.predict([
-    features,
-  ])[0];
+  if (
+    features.some(
+      (value) =>
+        typeof value !== "number" ||
+        !Number.isFinite(value) ||
+        value <= 0
+    )
+  ) {
+    throw new Error(
+      "Toutes les caractéristiques doivent être des nombres positifs."
+    );
+  }
+
+  const classId = model.predict([features])[0];
+
+  const species = SPECIES[classId];
+
+  if (!species) {
+    throw new Error("Classe prédite inconnue.");
+  }
+
+  const rawProbabilities = SPECIES.map((_, label) => {
+    const probability = model.predictProbability(
+      [features],
+      label
+    )[0];
+
+    return probability ?? 0;
+  });
+
+  const probabilities: IrisProbabilities = {
+    setosa: rawProbabilities[0],
+    versicolor: rawProbabilities[1],
+    virginica: rawProbabilities[2],
+  };
 
   return {
     classId,
-    species: species[classId],
+    species,
+    confidence: probabilities[species],
+    probabilities,
   };
 }

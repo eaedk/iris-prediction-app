@@ -208,7 +208,7 @@ No separate backend service is required.
 Clone the repository:
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/eaedk/iris-prediction-app.git
 cd iris-prediction-app
 ```
 

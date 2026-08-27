@@ -20,7 +20,7 @@ export default function HomePage() {
           Machine Learning × Next.js
         </p>
 
-        <h1 className="text-4xl font-bold tracking-tight">
+        <h1 className="text-4xl font-bold tracking-tight text-slate-900">
           Bienvenue sur Iris Classifier
         </h1>
 
@@ -73,7 +73,7 @@ export default function HomePage() {
               Dataset Iris
             </span>
 
-            <h2 className="mt-2 text-2xl font-bold">
+            <h2 className="mt-2 text-2xl font-bold text-slate-800">
               Un classique du Machine Learning
             </h2>
 
@@ -82,7 +82,7 @@ export default function HomePage() {
               mesures exprimées en centimètres.
             </p>
 
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 text-slate-600">
               {[
                 "Longueur du sépale",
                 "Largeur du sépale",
@@ -105,7 +105,7 @@ export default function HomePage() {
               className="mb-5 text-violet-600"
             />
 
-            <h3 className="text-xl font-semibold">
+            <h3 className="text-xl font-semibold text-slate-600">
               Essaie le modèle
             </h3>
 
@@ -129,11 +129,11 @@ export default function HomePage() {
       {/* fonctionnement */}
 
       <section className="mt-8">
-        <h2 className="text-2xl font-bold">
+        <h2 className="text-2xl font-bold text-slate-800">
           Comment ça fonctionne ?
         </h2>
 
-        <div className="mt-5 grid gap-5 md:grid-cols-3">
+        <div className="mt-5 grid gap-5 md:grid-cols-3 text-slate-600">
 
           <Step
             number="01"

@@ -21,16 +21,16 @@ export default function StatCard({
         </div>
 
         <div>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm font-medium text-slate-600">
             {title}
           </p>
 
-          <p className="text-3xl font-bold">
+          <p className="mt-1 text-3xl font-bold text-slate-950">
             {value}
           </p>
 
           {description && (
-            <p className="mt-1 text-xs text-slate-400">
+            <p className="mt-1 text-xs text-slate-500">
               {description}
             </p>
           )}
